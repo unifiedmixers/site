@@ -11,12 +11,13 @@ Direct-upload Pages project `unifiedmixers` (not git-connected):
 
 ```powershell
 $env:CLOUDFLARE_API_TOKEN = '<token with Cloudflare Pages: Edit>'
-$env:CLOUDFLARE_ACCOUNT_ID = '19df9ed4aaaed4e35be1f92f2df38c6a'
+$env:CLOUDFLARE_ACCOUNT_ID = '<the account id — dashboard homepage sidebar>'
 cd site
 npx --yes wrangler@4 pages deploy . --project-name unifiedmixers --branch main --commit-dirty=true
 ```
 
-`.assetsignore` keeps this README out of the deployed bundle.
+Note: this file is served at /README.md — direct-upload mode ignores
+`.assetsignore`. Keep anything private out of it.
 
 ## DNS reality check (2026-10-08)
 
