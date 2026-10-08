@@ -19,12 +19,14 @@ npx --yes wrangler@4 pages deploy . --project-name unifiedmixers --branch main -
 Note: this file is served at /README.md — direct-upload mode ignores
 `.assetsignore`. Keep anything private out of it.
 
-## DNS reality check (2026-10-08)
+## DNS reality check (updated 2026-10-08)
 
-The zone also carries cloudflared tunnels, including a wildcard
-`*.unifiedmixers.org` CNAME pointing at the Neo4j tunnel. `www` and the apex
-are specific records that win over the wildcard — but **any new subdomain
-(docs, api, app) must get its own record**, or the wildcard swallows it.
+The zone carries cloudflared tunnels (`llm`, `vllm`, `ms-neo4j` — each on its
+own explicit record). A wildcard `*.unifiedmixers.org` to the Neo4j tunnel
+existed until 2026-10-08, when the owner ruled it out: no more self-service
+subdomains for the tunnel operator. **Every subdomain — docs, api, app, or a
+new tunnel hostname for anyone — gets its own explicit record, minted by the
+zone owner.** Unknown names are NXDOMAIN by design.
 
 The footer carries the Impressum link on purpose — § 5 TMG applies the moment
 a page markets something under the umbrella. Don't remove it during redesigns.
